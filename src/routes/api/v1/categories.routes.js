@@ -15,5 +15,19 @@ routes.post(
     res.send('Categories add Api');
 })
 
+routes.put(
+    '/update-category', 
+    (req, res) => {
+    console.log('Category update Api');
+    res.send('Categories update Api');
+})
+
+routes.delete(
+    '/delete-category', 
+    (req, res) => {
+    console.log('Category delete Api');
+    res.send('Categories delete Api');
+})
+
 
 module.exports = routes;

@@ -1,18 +1,5 @@
 const mongoose = require("mongoose");
 
-const itemsSchema = new mongoose.Schema (
-    {
-       
-        qty: {
-            type: Number,
-            required: true
-        }
-    }, 
-    {
-        timestamps: true,
-        versionKey: false
-    }
-)
 const productsSchema = new mongoose.Schema (
     {
         subcategory_id: {
