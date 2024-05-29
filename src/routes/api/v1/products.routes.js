@@ -1,19 +1,23 @@
 const express = require("express");
+const { productsController } = require("../../../controller");
 
 const routes = express.Router();
 
 //localhost:3000/api/v1/products/list-products
-routes.get('/list-products', (req, res) => {
-    console.log('Products Get Api');
-    res.send('Products Get Api');
-})
+routes.get(
+    '/list-products',
+    productsController.listproducts
+)
+
+routes.get(
+    '/get-products', 
+    productsController.getproducts
+)
 
 routes.post(
     '/add-products', 
-    (req, res) => {
-    console.log('Products Add Api');
-    res.send('Products add Api');
-})
+    productsController.addproducts
+)
 
 routes.put(
     '/update-products', 
