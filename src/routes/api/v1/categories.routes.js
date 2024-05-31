@@ -11,7 +11,7 @@ routes.get(
 )
 
 routes.get(
-    '/get-categories', 
+    '/get-categories/:category_id', 
     categoriesController.getcategory
 )
 
@@ -22,17 +22,13 @@ routes.post(
 
 routes.put(
     '/update-category', 
-    (req, res) => {
-    console.log('Category update Api');
-    res.send('Categories update Api');
-})
+    categoriesController.updatecategory
+)
 
 routes.delete(
-    '/delete-category', 
-    (req, res) => {
-    console.log('Category delete Api');
-    res.send('Categories delete Api');
-})
+    '/delete-category/:category_id', 
+    categoriesController.deletecategory
+)
 
 
 module.exports = routes;

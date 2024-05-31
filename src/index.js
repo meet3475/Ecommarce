@@ -3,6 +3,9 @@ const routes = require("./routes/api/v1/index");
 const connectDB = require("./db/mongodb");
 
 const app = express();
+
+app.use(express.json())
+
 connectDB();
 
 
