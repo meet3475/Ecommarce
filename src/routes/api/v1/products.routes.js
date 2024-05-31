@@ -10,7 +10,7 @@ routes.get(
 )
 
 routes.get(
-    '/get-products', 
+    '/get-products/:product_id', 
     productsController.getproducts
 )
 
@@ -27,11 +27,9 @@ routes.put(
 })
 
 routes.delete(
-    '/delete-products', 
-    (req, res) => {
-    console.log('Products delete Api');
-    res.send('Products delete Api');
-})
+    '/delete-products/:product_id', 
+    productsController.deleteproducts
+)
 
 
 module.exports = routes;

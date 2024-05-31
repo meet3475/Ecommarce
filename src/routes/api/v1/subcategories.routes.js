@@ -10,7 +10,7 @@ routes.get(
 )
 
 routes.get(
-    '/get-subcategories', 
+    '/get-subcategories/:subcategories_id', 
     subcategoriesController.getsubcategory
 )
 
@@ -20,18 +20,15 @@ routes.post(
 )
 
 routes.put(
-    '/update-subcategory', 
-    (req, res) => {
-    console.log('Subcategory update Api');
-    res.send('Subcategory update Api');
-})
+    '/update-subcategory',
+    subcategoriesController.updatesubcategory 
+   
+)
 
 routes.delete(
-    '/delete-subcategory', 
-    (req, res) => {
-    console.log('Subcategory delete Api');
-    res.send('Subcategory delete Api');
-})
+    '/delete-subcategory/:subcategories_id', 
+    subcategoriesController.deletesubcategory
+)
 
 
 module.exports = routes;

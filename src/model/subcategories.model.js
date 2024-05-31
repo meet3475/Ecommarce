@@ -4,7 +4,7 @@ const subcategoriesSchema = new mongoose.Schema(
     {
         category_id: {
             type: mongoose.Types.ObjectId,
-            ref: 'User',
+            ref: 'Categories',
             required: true
         },
         name: {

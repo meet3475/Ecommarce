@@ -4,12 +4,12 @@ const productsSchema = new mongoose.Schema (
     {
         subcategory_id: {
             type: mongoose.Types.ObjectId,
-            ref: 'Categorie',
+            ref: 'Subcategories',
             required: true
         },
         sellar_id: {
             type: mongoose.Types.ObjectId,
-            ref: 'Categorie',
+            ref: 'User',
             required: true
         },
         name: {

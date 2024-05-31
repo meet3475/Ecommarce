@@ -25,16 +25,94 @@ const listproducts = async (req, res) => {
     }
 } 
 
-const getproducts = () => {
+const getproducts = async (req, res) => {
+    try {
+        console.log(req.params.product_id);
 
+        const product = await Products.findById(req.params.product_id);
+        console.log(product);
+
+        if (!product) {
+            res.status(404).json({
+                success: false,
+                message: "Product not found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Product fetched sucessfully",
+            data: product
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Intenal server error." + error.message
+        })
+    }
 }
 
-const addproducts = () => {
+const addproducts = async (req, res) => {
+    try {
+        console.log(req.body);
 
+        const product = await Products.create(req.body);
+        console.log(product);
+
+        if (!product) {
+            res.status(400).json({
+                success: false,
+                message: "Product not creted"
+            })
+        }
+
+        res.status(201).json({
+            success: true,
+            message: "Product careted sucessfully",
+            data: product
+        })
+
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Intenal server error." + error.message
+        })
+    }
+}
+
+const deleteproducts = async (req, res) => {
+    try {
+        console.log(req.params.product_id);
+
+        const product = await Products.findByIdAndDelete(req.params.product_id);
+        console.log(product);
+
+        if (!product) {
+            res.status(404).json({
+                success: false,
+                message: "Product not found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Product Deleted sucessfully",
+            data: product
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Intenal server error." + error.message
+        })
+    }
 }
 
 module.exports = {
   listproducts,
   getproducts,
-  addproducts
+  addproducts,
+  deleteproducts
 }
