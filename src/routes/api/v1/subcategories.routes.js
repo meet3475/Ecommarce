@@ -20,7 +20,7 @@ routes.post(
 )
 
 routes.put(
-    '/update-subcategory',
+    '/update-subcategory/:subcategories_id',
     subcategoriesController.updatesubcategory 
    
 )

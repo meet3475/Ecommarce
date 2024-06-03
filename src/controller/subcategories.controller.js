@@ -23,7 +23,7 @@ const listsubcategories = async (req, res) => {
             message: "Intenal server error." + error.message
         })
     }
-} 
+}
 
 const getsubcategory = async (req, res) => {
     try {
@@ -109,8 +109,32 @@ const deletesubcategory = async (req, res) => {
     }
 }
 
-const updatesubcategory = () => {
+const updatesubcategory = async (req, res) => {
+    try {
+        console.log("acbd", req.params.subcategories_id, req.body);
 
+        const subcategory = await Subcategories.findByIdAndUpdate(req.params.subcategories_id, req.body, { new: true, runValidators:true});
+        console.log(subcategory);
+
+        if (!subcategory) {
+            res.status(400).json({
+                success: false,
+                message: "Subcategory not Update"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Subcategory Update sucessfully",
+            data: subcategory
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Intenal server error." + error.message
+        })
+    }
 }
 
 module.exports = {

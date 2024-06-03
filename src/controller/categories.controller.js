@@ -111,7 +111,31 @@ const deletecategory = async (req, res) => {
 }
 
 const updatecategory = async (req, res) => {
+    try {
+        console.log("acbd", req.params.category_id, req.body);
+        
+        const category = await Categories.findByIdAndUpdate(req.params.category_id, req.body, {new:true, runValidators:true});
+        console.log(category);
 
+        if (!category) {
+            res.status(400).json({
+                success: false,
+                message: "Category not Update"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Category Update sucessfully",
+            data: category
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Intenal server error." + error.message
+        })
+    }
 }
 
 module.exports = {

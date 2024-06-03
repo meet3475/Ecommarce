@@ -110,9 +110,38 @@ const deleteproducts = async (req, res) => {
     }
 }
 
+const updateproducts = async (req, res) => {
+    try {
+        console.log("acbd", req.params.product_id, req.body);
+
+        const product = await Products.findByIdAndUpdate(req.params.product_id, req.body, { new: true, runValidators:true});
+        console.log(product);
+
+        if (!product) {
+            res.status(400).json({
+                success: false,
+                message: "Product not Update"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Product Update sucessfully",
+            data: product
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Intenal server error." + error.message
+        })
+    }
+}
+
 module.exports = {
   listproducts,
   getproducts,
   addproducts,
-  deleteproducts
+  deleteproducts,
+  updateproducts
 }

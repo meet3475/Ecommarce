@@ -20,11 +20,9 @@ routes.post(
 )
 
 routes.put(
-    '/update-products', 
-    (req, res) => {
-    console.log('Products update Api');
-    res.send('Products update Api');
-})
+    '/update-products/:product_id', 
+    productsController.updateproducts
+)
 
 routes.delete(
     '/delete-products/:product_id', 

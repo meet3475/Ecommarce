@@ -21,7 +21,7 @@ routes.post(
 )
 
 routes.put(
-    '/update-category', 
+    '/update-category/:category_id', 
     categoriesController.updatecategory
 )
 
