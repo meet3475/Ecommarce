@@ -13,8 +13,8 @@ const subcategoriesSchema = new mongoose.Schema(
             unique: true,
             trim: true,
             lowercase: true
-        }, 
-        discription : {
+        },
+        description: {
             type: String,
             trim: true,
             required: true
@@ -22,13 +22,12 @@ const subcategoriesSchema = new mongoose.Schema(
         image: {
             type: String,
             trim: true,
-            required: true
         },
         isActive: {
             type: Boolean,
             default: true
         }
-    }, 
+    },
     {
         timestamps: true,
         versionKey: false

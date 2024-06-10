@@ -25,6 +25,8 @@ const listsubcategories = async (req, res) => {
     }
 }
 
+
+
 const getsubcategory = async (req, res) => {
     try {
         console.log(req.params.subcategories_id);
