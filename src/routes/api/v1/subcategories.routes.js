@@ -10,6 +10,11 @@ routes.get(
 )
 
 routes.get(
+    '/bycategory-list-subcategories/:category_id', 
+    subcategoriesController.getcategorybysubcategory
+)
+
+routes.get(
     '/get-subcategories/:subcategories_id', 
     subcategoriesController.getsubcategory
 )

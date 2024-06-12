@@ -25,6 +25,33 @@ const listsubcategories = async (req, res) => {
     }
 }
 
+const getcategorybysubcategory = async (req, res) => {
+    try {
+        console.log(req.params.category_id);
+
+        const subcategories = await Subcategories.find({category_id: req.params.category_id});
+        console.log(subcategories);
+
+        if (!subcategories || subcategories.length === 0) {
+            res.status(404).json({
+                success: false,
+                message: "Subcategories not found"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Subcategories fetched sucessfully",
+            data: subcategories
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Intenal server error." + error.message
+        })
+    }
+}
 
 
 const getsubcategory = async (req, res) => {
@@ -115,7 +142,7 @@ const updatesubcategory = async (req, res) => {
     try {
         console.log("acbd", req.params.subcategories_id, req.body);
 
-        const subcategory = await Subcategories.findByIdAndUpdate(req.params.subcategories_id, req.body, { new: true, runValidators:true});
+        const subcategory = await Subcategories.findByIdAndUpdate(req.params.subcategories_id, req.body, { new: true, runValidators: true });
         console.log(subcategory);
 
         if (!subcategory) {
@@ -141,6 +168,7 @@ const updatesubcategory = async (req, res) => {
 
 module.exports = {
     listsubcategories,
+    getcategorybysubcategory,
     getsubcategory,
     addsubcategory,
     deletesubcategory,
